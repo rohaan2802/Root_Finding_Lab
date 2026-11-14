@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A numerical computing study comparing five scalar root-finding methods across seven analytic equations.">
+<title>Root Finding Lab · Mohammad Rohaan</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/demo-data.js" defer></script>
+<script src="assets/js/demo.js" defer></script>
+</head>
+<body id="top">
+<a class="skip" href="#overview">Skip to content</a>
+<header class="masthead">
+<div class="wrap nav">
+<a class="brand" href="#top">Root Finding Lab</a>
+<nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#try-it">Try it</a><a href="#results">Results</a><a href="#gallery">Gallery</a><a href="#workbench">Desktop App</a><a href="#setup">Setup</a></nav>
+<button id="theme" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button>
+</div>
+</header>
+<main>
+<div class="hero">
+<div class="wrap hero-grid">
+<div>
+<p class="course">CS2008 NUMERICAL COMPUTING</p>
+<h1>Root Finding<br>Lab</h1>
+<p class="lead">Five scalar solvers, seven analytic equations, and a study of where convergence breaks down.</p>
+<div class="actions"><a class="primary" href="#try-it">Compare solver runs</a><a class="secondary" href="notebooks/root_finding_study.ipynb" download>Download notebook</a></div>
+</div>
+<figure class="hero-figure"><img src="assets/thumbs/f5_right_function_profile.webp" width="960" height="600" alt="The f5 curve touches zero at x = 1 while both interval endpoints are positive."><figcaption>The double root at x = 1 touches the axis.</figcaption></figure>
+</div>
+</div>
+<div class="wrap content">
+<section id="live-links"><h2>Live Links</h2>
+<div class="scroll" tabindex="0" role="region" aria-label="Project links"><table><thead><tr><th scope="col">What</th><th scope="col">Link</th></tr></thead><tbody><tr><td>Repository</td><td><a href="https://github.com/rohaan2802/Root_Finding_Lab">https://github.com/rohaan2802/Root_Finding_Lab</a></td></tr><tr><td>GitHub Pages</td><td><a href="https://rohaan2802.github.io/Root_Finding_Lab/">https://rohaan2802.github.io/Root_Finding_Lab/</a></td></tr><tr><td>Experiment notebook</td><td><a href="https://github.com/rohaan2802/Root_Finding_Lab/blob/main/notebooks/root_finding_study.ipynb">https://github.com/rohaan2802/Root_Finding_Lab/blob/main/notebooks/root_finding_study.ipynb</a></td></tr></tbody></table></div>
+</section>
+<nav class="contents" aria-label="Page contents"><strong>Contents</strong><a href="#overview">Overview</a><a href="#whats-inside">What’s inside</a><a href="#methods">Methods</a><a href="#try-it">Try it</a><a href="#workbench">Desktop app</a><a href="#results">Results</a><a href="#gallery">Gallery</a><a href="#setup">Setup</a><a href="#limitations">Limitations</a><a href="#author">Author</a></nav>
+<section id="overview"><h2>Overview</h2><p>Root Finding Lab compares five numerical methods for solving f(x) = 0. The Fall 2025 CS2008 Numerical Computing study uses seven analytic equations across eight intervals, including a double root, a flat initial derivative, and a cube root with a vertical tangent.</p><p>The equations, derivatives, intervals, seed choices, and reference roots are defined in Python. The experiments run without a dataset download.</p></section>
+<section id="whats-inside"><h2>What’s Inside</h2><div class="file-list"><a href="notebooks/root_finding_study.ipynb" download>Study notebook <span aria-hidden="true">↓</span></a><a href="docs/assignment_brief.pdf">Assignment brief <span aria-hidden="true">↗</span></a><a href="results/bracketing.csv" download>Endpoint signs <span aria-hidden="true">↓</span></a><a href="results/solver_runs.csv" download>Solver runs <span aria-hidden="true">↓</span></a><a href="results/convergence_order.csv" download>Convergence order <span aria-hidden="true">↓</span></a><a href="results/benchmark.csv" download>Benchmark data <span aria-hidden="true">↓</span></a></div></section>
+<section id="methods"><h2>Project Breakdown</h2>
+<div class="scroll" tabindex="0" role="region" aria-label="Solver comparison"><table><thead><tr><th scope="col">Method</th><th scope="col">Inputs</th><th scope="col">Behavior under test</th></tr></thead><tbody><tr><td>Bisection</td><td>Function and sign-changing interval</td><td>Bracket contraction and endpoint roots</td></tr><tr><td>Fixed-point</td><td>Function, iteration map, and seed</td><td>Contraction and domain failures</td></tr><tr><td>Newton–Raphson</td><td>Function, derivative, and seed</td><td>Seed sensitivity and flat derivative</td></tr><tr><td>Secant</td><td>Function and two seeds</td><td>Slope breakdown and out-of-interval convergence</td></tr><tr><td>Safeguarded Newton</td><td>Function, derivative, and sign-changing interval</td><td>Central Newton steps and bisection fallback</td></tr></tbody></table></div></section>
+<section id="results"><h2>Results</h2><p>In the saved strict-residual benchmark, 14 of 15 runs reached |f(x)| ≤ 10⁻¹⁰. The f3 Newton trial stopped at x = 1 with an unusable derivative. Secant met the threshold at x ≈ 3.577152, outside [0, 2]. The hybrid recovered via bisection and reached the intended root near 0.1118325592.</p>
+<div class="callout"><strong>Residual and position error tell different stories</strong><p>On the double root, Newton residuals below 10⁻⁸ coexist with position errors above 10⁻⁵. The observed order falls from roughly two at simple roots to one here.</p></div>
+<p><strong>Benchmark protocol.</strong> The timings report the median of seven batches of 200 calls. The experiment disables step and bracket stops so an accepted run actually reaches the residual threshold. Compare time alongside root location and exit status.</p><p class="muted">These figures and CSVs are saved results. Run the notebook or experiment command to recompute them.</p></section>
+<section id="try-it">
+<h2>Compare Solver Runs</h2>
+<p>Inspect saved Python traces for a smooth root, a flat midpoint, and a double root. On f3, compare Newton’s derivative failure, Secant’s out-of-interval root, and the hybrid’s recovery.</p>
+<div class="demo-panel">
+<div class="demo-fields">
+<label for="demo-case">Equation<select id="demo-case"><option value="f3">f3 · x exp(−x) − 0.1</option><option value="f5-right">f5-right · (x − 1)²(x + 2)</option><option value="f2">f2 · cos(x) − x</option></select></label>
+<label for="demo-method">Solver<select id="demo-method"></select></label>
+</div>
+<p id="demo-summary" role="status"></p>
+<details><summary>Iteration trace <span id="demo-count"></span></summary>
+<div class="scroll trace-scroll" role="region" aria-label="Iteration data" tabindex="0"><table><thead><tr><th scope="col">Point</th><th scope="col">Step</th><th scope="col">Estimate</th><th scope="col">Residual</th></tr></thead><tbody id="demo-trace"></tbody></table></div>
+</details>
+</div>
+</section>
+<section id="workbench">
+<h2>Desktop Workbench</h2>
+<p>Run any of the eight intervals with adjustable seeds and tolerances. The desktop app plots the function and error history, reports whether the result lies in the assigned interval, and exports the trace with step type and bracket width.</p>
+<pre class="scroll" tabindex="0"><code>.venv\Scripts\python.exe -m rootlab.desktop</code></pre>
+<p>With the project folder on your computer and dependencies installed, run the command above or double-click <code>launch_workbench.cmd</code>. The <a href="rootlab/desktop.py">desktop source</a> and <a href="rootlab/workbench.py">command-line runner</a> are included.</p>
+<h3>Reproduce a seed-sensitive case</h3>
+<pre class="scroll" tabindex="0"><code>.venv\Scripts\python.exe -m rootlab.workbench --case f3 --method Newton --seeds 0.2 --strict --tol-f 1e-10</code></pre>
+<p>The default Newton seed on f3 is 1, where the derivative vanishes. Starting at 0.2 reaches the smaller root inside the assigned interval.</p>
+</section>
+<section id="gallery"><h2>Figure Gallery</h2><p>Open a figure to inspect its labels, then use Previous, Next, the arrow keys, or swipe to browse.</p>
+<div class="filters"><label for="search">Search figures<input id="search" type="search" placeholder="Title or caption"></label>
+<div class="chips" role="group" aria-label="Filter by category"><button type="button" data-filter="All" aria-pressed="true">All</button><button type="button" data-filter="Inputs" aria-pressed="false">Inputs</button><button type="button" data-filter="Convergence" aria-pressed="false">Convergence</button><button type="button" data-filter="Results" aria-pressed="false">Results</button><button type="button" data-filter="Source" aria-pressed="false">Source</button></div></div>
+<p id="count" role="status">24 figures</p><div class="gallery"><figure class="shot" data-category="Inputs"><a href="assets/screenshots/f1_function_profile.png" aria-label="Enlarge F1 function profile"><img src="assets/thumbs/f1_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F1 function profile</strong><p>The cubic is strictly increasing and crosses zero once on [0, 4].</p></figcaption></figure>
+<figure class="shot" data-category="Inputs"><a href="assets/screenshots/f2_function_profile.png" aria-label="Enlarge F2 function profile"><img src="assets/thumbs/f2_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F2 function profile</strong><p>The intersection of cos(x) and x appears as a zero on [0, 1].</p></figcaption></figure>
+<figure class="shot" data-category="Inputs"><a href="assets/screenshots/f3_function_profile.png" aria-label="Enlarge F3 function profile"><img src="assets/thumbs/f3_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F3 function profile</strong><p>The bracket isolates the smaller root. Its midpoint x = 1 has zero slope.</p></figcaption></figure>
+<figure class="shot" data-category="Inputs"><a href="assets/screenshots/f4_function_profile.png" aria-label="Enlarge F4 function profile"><img src="assets/thumbs/f4_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F4 function profile</strong><p>The cubic changes sign on [2, 4], which excludes its stationary points.</p></figcaption></figure>
+<figure class="shot" data-category="Inputs"><a href="assets/screenshots/f5_left_function_profile.png" aria-label="Enlarge F5-LEFT function profile"><img src="assets/thumbs/f5_left_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F5-LEFT function profile</strong><p>The simple root at −2 crosses the axis within [−3, 0].</p></figcaption></figure>
+<figure class="shot" data-category="Inputs"><a href="assets/screenshots/f5_right_function_profile.png" aria-label="Enlarge F5-RIGHT function profile"><img src="assets/thumbs/f5_right_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F5-RIGHT function profile</strong><p>The double root at 1 touches the axis. Both endpoints are positive.</p></figcaption></figure>
+<figure class="shot" data-category="Inputs"><a href="assets/screenshots/f6_function_profile.png" aria-label="Enlarge F6 function profile"><img src="assets/thumbs/f6_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F6 function profile</strong><p>The real cube root crosses zero with a vertical tangent.</p></figcaption></figure>
+<figure class="shot" data-category="Inputs"><a href="assets/screenshots/f7_function_profile.png" aria-label="Enlarge F7 function profile"><img src="assets/thumbs/f7_function_profile.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F7 function profile</strong><p>The chosen continuous test function crosses zero between 0 and 1.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f1_residual_traces.png" aria-label="Enlarge F1 residual traces"><img src="assets/thumbs/f1_residual_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F1 residual traces</strong><p>Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f1_root_error_traces.png" aria-label="Enlarge F1 root error traces"><img src="assets/thumbs/f1_root_error_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F1 root error traces</strong><p>Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f2_residual_traces.png" aria-label="Enlarge F2 residual traces"><img src="assets/thumbs/f2_residual_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F2 residual traces</strong><p>Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f2_root_error_traces.png" aria-label="Enlarge F2 root error traces"><img src="assets/thumbs/f2_root_error_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F2 root error traces</strong><p>Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f5_left_residual_traces.png" aria-label="Enlarge F5-LEFT residual traces"><img src="assets/thumbs/f5_left_residual_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F5-LEFT residual traces</strong><p>Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f5_left_root_error_traces.png" aria-label="Enlarge F5-LEFT root error traces"><img src="assets/thumbs/f5_left_root_error_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F5-LEFT root error traces</strong><p>Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f5_right_residual_traces.png" aria-label="Enlarge F5-RIGHT residual traces"><img src="assets/thumbs/f5_right_residual_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F5-RIGHT residual traces</strong><p>Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Bisection and hybrid reject the same-sign interval.</p></figcaption></figure>
+<figure class="shot" data-category="Convergence"><a href="assets/screenshots/f5_right_root_error_traces.png" aria-label="Enlarge F5-RIGHT root error traces"><img src="assets/thumbs/f5_right_root_error_traces.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>F5-RIGHT root error traces</strong><p>Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Bisection and hybrid reject the same-sign interval.</p></figcaption></figure>
+<figure class="shot" data-category="Results"><a href="assets/screenshots/endpoint_sign_checks.png" aria-label="Enlarge Endpoint sign checks"><img src="assets/thumbs/endpoint_sign_checks.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Endpoint sign checks</strong><p>Seven intervals change sign. The double-root interval is the exception.</p></figcaption></figure>
+<figure class="shot" data-category="Results"><a href="assets/screenshots/fixed_point_map_comparison.png" aria-label="Enlarge Fixed-point map comparison"><img src="assets/thumbs/fixed_point_map_comparison.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Fixed-point map comparison</strong><p>Two maps per equation show contraction, overflow, a domain exit, and an iteration cap.</p></figcaption></figure>
+<figure class="shot" data-category="Results"><a href="assets/screenshots/observed_convergence_order.png" aria-label="Enlarge Observed convergence order"><img src="assets/thumbs/observed_convergence_order.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Observed convergence order</strong><p>Newton is near order two at simple roots and near one at the double root.</p></figcaption></figure>
+<figure class="shot" data-category="Results"><a href="assets/screenshots/time_to_residual_threshold.png" aria-label="Enlarge Time to residual threshold"><img src="assets/thumbs/time_to_residual_threshold.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Time to residual threshold</strong><p>Seven batches of 200 solves per bar. The × marks Newton’s flat-derivative failure on f3.</p></figcaption></figure>
+<figure class="shot" data-category="Results"><a href="assets/screenshots/hybrid_fallback_and_recovery.png" aria-label="Enlarge Hybrid fallback and recovery"><img src="assets/thumbs/hybrid_fallback_and_recovery.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Hybrid fallback and recovery</strong><p>Selected rows from the f3 trace show the first bisection step and the final residual.</p></figcaption></figure>
+<figure class="shot" data-category="Results"><a href="assets/screenshots/residual_versus_position_error.png" aria-label="Enlarge Residual versus position error"><img src="assets/thumbs/residual_versus_position_error.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Residual versus position error</strong><p>At the double root, residuals below 10⁻⁸ coexist with position errors above 10⁻⁵.</p></figcaption></figure>
+<figure class="shot" data-category="Source"><a href="assets/screenshots/newton_derivative_guard.png" aria-label="Enlarge Newton derivative guard"><img src="assets/thumbs/newton_derivative_guard.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Newton derivative guard</strong><p>The solver checks slope finiteness and magnitude before dividing.</p></figcaption></figure>
+<figure class="shot" data-category="Source"><a href="assets/screenshots/secant_slope_guard.png" aria-label="Enlarge Secant slope guard"><img src="assets/thumbs/secant_slope_guard.webp" alt="" width="960" height="600" loading="lazy"></a><figcaption><strong>Secant slope guard</strong><p>The secant update uses two function values and detects a vanishing denominator.</p></figcaption></figure></div></section>
+<section id="structure"><h2>Folder Structure</h2><pre class="scroll" tabindex="0">Root_Finding_Lab/
+├── launch_workbench.cmd               Windows desktop launcher
+├── index.html                         GitHub Pages entry point
+├── assets/                            Site CSS, JS, figures and previews
+├── archive/                           Original assignment notebook
+├── docs/                              Assignment brief and numerical notes
+├── notebooks/root_finding_study.ipynb  Executed Q1–Q8 notebook
+├── results/                           Four saved CSV tables
+├── rootlab/                           Solvers, inputs, experiments, figures
+├── tests/                             Numerical and workbench regression checks
+└── requirements.txt                   Notebook and figure dependencies</pre></section>
+<section id="setup"><h2>Setup</h2><p>From the repository root in PowerShell, create the Python environment, run the tests, and write fresh results.</p><pre class="scroll" tabindex="0"><code>python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv\Scripts\python.exe -m unittest discover -s tests -v
+.venv\Scripts\python.exe -m rootlab.experiments --output build/results</code></pre><p>Open the study notebook in your Jupyter editor using that environment to rerun the plots and tables.</p></section>
+<section id="limitations"><h2>Limitations</h2><p>Bracketing assumes continuity and an endpoint sign change or exact endpoint root. Open methods can leave the assigned interval, and local fixed-point slopes depend on the map and seed. Near the f5 double root, a small residual can coexist with substantial error in x. Timing varies by machine and includes trace recording.</p></section>
+<section id="author"><h2>About the Author</h2><p>Mohammad Rohaan developed the original study for CS2008 at FAST-NUCES in Fall 2025. <a href="https://github.com/rohaan2802">GitHub profile</a></p></section>
+</div>
+</main>
+<footer><div class="wrap">Root Finding Lab · Mohammad Rohaan</div></footer>
+<button id="back-top" type="button" aria-label="Back to top" title="Back to top" hidden><span aria-hidden="true"></span></button>
+<dialog id="viewer" aria-labelledby="viewer-title"><div class="viewer-head"><h2 id="viewer-title"></h2><button id="close" type="button" autofocus>Close</button></div>
+<div id="viewer-image" tabindex="0" aria-label="Figure image area"><img alt="" width="1440" height="900"></div>
+<p id="viewer-caption"></p>
+<div class="viewer-controls"><button id="prev" type="button">Previous</button><button id="zoom" type="button" aria-pressed="false">Zoom in</button><button id="next" type="button">Next</button><span id="position" aria-live="polite"></span></div></dialog>
+</body>
+</html>

@@ -1,0 +1,19 @@
+case,method,samples,order,status
+f1,Bisection,50,0.5920744281557356,residual
+f1,Fixed-point,24,0.9978885280277312,residual
+f1,Newton,7,1.9996727499780536,residual
+f1,Secant,14,1.6191034845092251,residual
+f1,Hybrid,41,1.1895613447022855,residual
+f2,Bisection,49,1.7604745172383436,residual
+f2,Fixed-point,86,1.0175902900254628,residual
+f2,Newton,5,1.9970095121466291,residual
+f2,Secant,8,1.595292287070036,residual
+f2,Hybrid,38,1.1347593869453951,residual
+f5-left,Bisection,52,1.0,residual
+f5-left,Fixed-point,17,1.0003093349267878,residual
+f5-left,Newton,7,1.9997087135736942,residual
+f5-left,Secant,37,,unusable secant slope
+f5-left,Hybrid,6,1.2966069431192204,residual
+f5-right,Fixed-point,26,1.0,residual
+f5-right,Newton,26,1.0000000046373496,residual
+f5-right,Secant,40,1.0000000097726602,unusable secant slope

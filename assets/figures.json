@@ -1,0 +1,170 @@
+[
+  {
+    "title": "F1 function profile",
+    "category": "Inputs",
+    "caption": "The cubic is strictly increasing and crosses zero once on [0, 4].",
+    "full": "assets/screenshots/f1_function_profile.png",
+    "preview": "assets/thumbs/f1_function_profile.webp"
+  },
+  {
+    "title": "F2 function profile",
+    "category": "Inputs",
+    "caption": "The intersection of cos(x) and x appears as a zero on [0, 1].",
+    "full": "assets/screenshots/f2_function_profile.png",
+    "preview": "assets/thumbs/f2_function_profile.webp"
+  },
+  {
+    "title": "F3 function profile",
+    "category": "Inputs",
+    "caption": "The bracket isolates the smaller root. Its midpoint x = 1 has zero slope.",
+    "full": "assets/screenshots/f3_function_profile.png",
+    "preview": "assets/thumbs/f3_function_profile.webp"
+  },
+  {
+    "title": "F4 function profile",
+    "category": "Inputs",
+    "caption": "The cubic changes sign on [2, 4], which excludes its stationary points.",
+    "full": "assets/screenshots/f4_function_profile.png",
+    "preview": "assets/thumbs/f4_function_profile.webp"
+  },
+  {
+    "title": "F5-LEFT function profile",
+    "category": "Inputs",
+    "caption": "The simple root at −2 crosses the axis within [−3, 0].",
+    "full": "assets/screenshots/f5_left_function_profile.png",
+    "preview": "assets/thumbs/f5_left_function_profile.webp"
+  },
+  {
+    "title": "F5-RIGHT function profile",
+    "category": "Inputs",
+    "caption": "The double root at 1 touches the axis. Both endpoints are positive.",
+    "full": "assets/screenshots/f5_right_function_profile.png",
+    "preview": "assets/thumbs/f5_right_function_profile.webp"
+  },
+  {
+    "title": "F6 function profile",
+    "category": "Inputs",
+    "caption": "The real cube root crosses zero with a vertical tangent.",
+    "full": "assets/screenshots/f6_function_profile.png",
+    "preview": "assets/thumbs/f6_function_profile.webp"
+  },
+  {
+    "title": "F7 function profile",
+    "category": "Inputs",
+    "caption": "The chosen continuous test function crosses zero between 0 and 1.",
+    "full": "assets/screenshots/f7_function_profile.png",
+    "preview": "assets/thumbs/f7_function_profile.webp"
+  },
+  {
+    "title": "F1 residual traces",
+    "category": "Convergence",
+    "caption": "Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.",
+    "full": "assets/screenshots/f1_residual_traces.png",
+    "preview": "assets/thumbs/f1_residual_traces.webp"
+  },
+  {
+    "title": "F1 root error traces",
+    "category": "Convergence",
+    "caption": "Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.",
+    "full": "assets/screenshots/f1_root_error_traces.png",
+    "preview": "assets/thumbs/f1_root_error_traces.webp"
+  },
+  {
+    "title": "F2 residual traces",
+    "category": "Convergence",
+    "caption": "Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.",
+    "full": "assets/screenshots/f2_residual_traces.png",
+    "preview": "assets/thumbs/f2_residual_traces.webp"
+  },
+  {
+    "title": "F2 root error traces",
+    "category": "Convergence",
+    "caption": "Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.",
+    "full": "assets/screenshots/f2_root_error_traces.png",
+    "preview": "assets/thumbs/f2_root_error_traces.webp"
+  },
+  {
+    "title": "F5-LEFT residual traces",
+    "category": "Convergence",
+    "caption": "Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.",
+    "full": "assets/screenshots/f5_left_residual_traces.png",
+    "preview": "assets/thumbs/f5_left_residual_traces.webp"
+  },
+  {
+    "title": "F5-LEFT root error traces",
+    "category": "Convergence",
+    "caption": "Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Each curve uses the same analytic case.",
+    "full": "assets/screenshots/f5_left_root_error_traces.png",
+    "preview": "assets/thumbs/f5_left_root_error_traces.webp"
+  },
+  {
+    "title": "F5-RIGHT residual traces",
+    "category": "Convergence",
+    "caption": "Recorded residual; values below 10⁻¹⁷ are plotted at the floor. Bisection and hybrid reject the same-sign interval.",
+    "full": "assets/screenshots/f5_right_residual_traces.png",
+    "preview": "assets/thumbs/f5_right_residual_traces.webp"
+  },
+  {
+    "title": "F5-RIGHT root error traces",
+    "category": "Convergence",
+    "caption": "Recorded root error; values below 10⁻¹⁷ are plotted at the floor. Bisection and hybrid reject the same-sign interval.",
+    "full": "assets/screenshots/f5_right_root_error_traces.png",
+    "preview": "assets/thumbs/f5_right_root_error_traces.webp"
+  },
+  {
+    "title": "Endpoint sign checks",
+    "category": "Results",
+    "caption": "Seven intervals change sign. The double-root interval is the exception.",
+    "full": "assets/screenshots/endpoint_sign_checks.png",
+    "preview": "assets/thumbs/endpoint_sign_checks.webp"
+  },
+  {
+    "title": "Fixed-point map comparison",
+    "category": "Results",
+    "caption": "Two maps per equation show contraction, overflow, a domain exit, and an iteration cap.",
+    "full": "assets/screenshots/fixed_point_map_comparison.png",
+    "preview": "assets/thumbs/fixed_point_map_comparison.webp"
+  },
+  {
+    "title": "Observed convergence order",
+    "category": "Results",
+    "caption": "Newton is near order two at simple roots and near one at the double root.",
+    "full": "assets/screenshots/observed_convergence_order.png",
+    "preview": "assets/thumbs/observed_convergence_order.webp"
+  },
+  {
+    "title": "Time to residual threshold",
+    "category": "Results",
+    "caption": "Seven batches of 200 solves per bar. The × marks Newton’s flat-derivative failure on f3.",
+    "full": "assets/screenshots/time_to_residual_threshold.png",
+    "preview": "assets/thumbs/time_to_residual_threshold.webp"
+  },
+  {
+    "title": "Hybrid fallback and recovery",
+    "category": "Results",
+    "caption": "Selected rows from the f3 trace show the first bisection step and the final residual.",
+    "full": "assets/screenshots/hybrid_fallback_and_recovery.png",
+    "preview": "assets/thumbs/hybrid_fallback_and_recovery.webp"
+  },
+  {
+    "title": "Residual versus position error",
+    "category": "Results",
+    "caption": "At the double root, residuals below 10⁻⁸ coexist with position errors above 10⁻⁵.",
+    "full": "assets/screenshots/residual_versus_position_error.png",
+    "preview": "assets/thumbs/residual_versus_position_error.webp"
+  },
+  {
+    "title": "Newton derivative guard",
+    "category": "Source",
+    "caption": "The solver checks slope finiteness and magnitude before dividing.",
+    "full": "assets/screenshots/newton_derivative_guard.png",
+    "preview": "assets/thumbs/newton_derivative_guard.webp"
+  },
+  {
+    "title": "Secant slope guard",
+    "category": "Source",
+    "caption": "The secant update uses two function values and detects a vanishing denominator.",
+    "full": "assets/screenshots/secant_slope_guard.png",
+    "preview": "assets/thumbs/secant_slope_guard.webp"
+  }
+]
