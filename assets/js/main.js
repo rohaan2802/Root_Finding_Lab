@@ -27,6 +27,32 @@ themeButton.addEventListener("click", () => {
   }
 });
 
+const menuToggle = document.querySelector("#menu-toggle");
+const mainNav = document.querySelector("#main-nav");
+const compactNav = matchMedia("(max-width: 900px)");
+
+function setMenu(open) {
+  mainNav.classList.toggle("open", open);
+  menuToggle.setAttribute("aria-expanded", open);
+  menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+
+menuToggle.addEventListener("click", () => setMenu(!mainNav.classList.contains("open")));
+mainNav.addEventListener("click", event => {
+  if (!compactNav.matches || !event.target.closest("a")) return;
+  setMenu(false);
+  menuToggle.focus({ preventScroll: true });
+});
+document.addEventListener("keydown", event => {
+  if (event.key !== "Escape" || !mainNav.classList.contains("open")) return;
+  setMenu(false);
+  menuToggle.focus();
+});
+document.addEventListener("click", event => {
+  if (!event.target.closest(".masthead")) setMenu(false);
+});
+compactNav.addEventListener("change", () => setMenu(false));
+
 const backTop = document.querySelector("#back-top");
 const brand = document.querySelector(".brand");
 function updateBackTop() {
